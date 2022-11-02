@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="800" height="500"></canvas>
+<script>
+    Bài 1
+    function findMax (arr) {
+        for (let i=0;i<arr.length-1;i++) {
+            for (let j=i+1;j<arr.length;j++) {
+                if (arr[i]>arr[j]) {
+                    let tmp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = tmp;
+                }
+            }
+        }
+        for (let s=0;s<arr.length;s++) {
+            document.write(arr[s] + ' ' +"</br>");
+        }
+        document.write('Điểm thi cao thứ 2 là: ' + arr[arr.length-2])
+    }
+    let arr1= [6,7,8,9,10];
+    findMax(arr1)
+
+    // bài 3
+    function sumOfListFiBoNaCy(x) {
+        let arr = [0,1]
+        let a = 0;
+        let b = 1;
+        let check;
+        let sum = 0;
+        for (let i = 2;; i++) {
+            if (a+b > x) {
+                break;
+            }
+            arr.push(a+b);
+            check = a;
+            a = b;
+            b = check + b;
+        }
+        for (let i = 0;i<arr.length; i++){
+            sum+= arr[i]
+        }
+        return sum;
+    }
+    document.write(sumOfListFiBoNaCy(+prompt("nhập số x")));
+
+
+
+
+
+
+// bài 4
+
+    class Circle {
+        x
+        y
+        radius
+        constructor(x,y,radius) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius
+        }
+        render () {
+            let c = document.getElementById('myCanvas');
+            let ctx = c.getContext('2d');
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.radius,0,2*Math.PI);
+            ctx.fillStyle = '#bfaf04';
+            ctx.fill();
+        }
+    }
+    let circle = new Circle(180,90,55);
+    circle.render()
+
+    // bài 2
+    function deleteNumberFromArray (arr,index){
+        let newArr = [];
+        if(index>=0 && index< arr.length){
+            for (let i=0;i<index;i++){
+                newArr.push(arr[i]);
+            }
+            for (let i=index+1;i<arr.length;i++){
+                newArr.push(arr[i]);
+            }
+        }else
+            return arr;
+        return newArr;
+    }
+    let arr = [1,2,3,4,5,6]
+    let index = +prompt("nhập số")
+    document.write(deleteNumberFromArray (arr,index)+'')
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
